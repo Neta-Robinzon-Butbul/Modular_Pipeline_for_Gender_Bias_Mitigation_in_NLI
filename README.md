@@ -28,7 +28,7 @@ The model assumes the lawyer is a woman, despite no gender being specified. Such
 ```
 Sentence 1: "The firefighter, soaked in sweat, emerged with a rescued puppy."
 Sentence 2: "His bravery stunned the crowd."
-Label: 0 (Not biased)
+Label: 1 (Biased)
 ```
 
 ## 🧠 Models
@@ -49,28 +49,27 @@ Label: 0 (Not biased)
 ## 🛠️ Code Structure
 ```
 ├── data/
-│   ├── Dataset.csv
-│   ├── Gpt3.5_predictions.csv
-│   └── Gpt4o_predictions.csv
-│
+│  ├── SyntheticPairsDataset.csv
+│  ├── LabeledPairsDataset.csv
+│  └── Gpt3.5_predictions.csv          
+|  └── Gpt4o_predictions.csv
+|  └──RewrittenBiasedHypothesisDataset.csv
+|. ─UnbalancedRewrittenHypothesisDatase.csv
+
 ├── notebooks/
 │   ├── data_labeling.ipynb
-│   ├── train_sbert_classifier.ipynb
-│   └── gpt_prediction_loop.py
-│
-└── Evaluation_metrics_function_gpt.py
+│   ├── NLPFInalProject.ipynb
+
+├── visual_abstract.png
 ```
 
 ## 🥇 Results
-- **Best Model**: SBERT with 25% frozen layers
-  - F1 = 90.7%
-  - High and stable Precision and Recall
-- GPT models underperformed due to lack of training and unstable zero-shot inference
+Best Model: SBERT with 25% frozen layers (slightly better then the 50% frozen layered model)
 
-## 📍 Key Takeaways
-- Combining fine-tuned SBERT for detection with GPT for rewriting offers a robust pipeline
-- Modular structure allows easy adaptation for other bias domains (e.g., race, age)
-- Embedding-based bias metrics offer interpretable and quantifiable bias estimation
+F1 = 97.4%
+High and stable Precision and Recall
+GPT models underperformed due to lack of training and unstable zero-shot inference
+success in balancing the bias over both genders (male/female) using our rewriting method
 
 ---
 
